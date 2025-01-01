@@ -50,7 +50,7 @@ karpenter:
 services:
   frontend:
     name: frontend
-    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:frontend-prod-909360cfff5c3ea0968f157387f1ec0ed4349e3a
+    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:frontend-prod-628768e71b2a646d371c74b4d7e18f5bc64faad1
     port: 80
     replicas: 1
     resources:
@@ -62,7 +62,7 @@ services:
         memory: 256Mi
   product:
     name: product-service
-    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:product-service-prod-909360cfff5c3ea0968f157387f1ec0ed4349e3a
+    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:product-service-prod-628768e71b2a646d371c74b4d7e18f5bc64faad1
     port: 8080
     replicas: 1
     resources:
@@ -78,7 +78,7 @@ services:
       dbName: product-service
   order:
     name: order-service
-    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:order-service-prod-909360cfff5c3ea0968f157387f1ec0ed4349e3a
+    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:order-service-prod-628768e71b2a646d371c74b4d7e18f5bc64faad1
     port: 8081
     replicas: 1
     resources:
