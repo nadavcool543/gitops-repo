@@ -2,7 +2,6 @@
 environment: dev
 domain: nshohat.online
 clusterName: dev-eks-cluster
-
 # Karpenter Configuration
 karpenter:
   namespace: karpenter
@@ -12,7 +11,7 @@ karpenter:
     role: KarpenterNodeRole-dev-eks-cluster
     rootVolume:
       deviceName: /dev/xvda
-      size: 50Gi  
+      size: 50Gi
       type: gp3
       encrypted: true
     metadataOptions:
@@ -37,22 +36,21 @@ karpenter:
         values: ["linux"]
       - key: karpenter.sh/capacity-type
         operator: In
-        values: ["spot"]  # Only spot instances for dev to save costs
+        values: ["spot"] # Only spot instances for dev to save costs
       - key: karpenter.k8s.aws/instance-category
         operator: In
-        values: ["t", "m"]  # Using t2/t3 and m5/m6 for dev (cost-effective)
+        values: ["t", "m"] # Using t2/t3 and m5/m6 for dev (cost-effective)
       - key: karpenter.k8s.aws/instance-generation
         operator: Gt
         values: ["2"]
       - key: karpenter.k8s.aws/instance-size
         operator: In
-        values: ["medium", "large"]  # Smaller instances for dev
+        values: ["medium", "large"] # Smaller instances for dev
     weight: 10
-
 services:
   frontend:
     name: frontend
-    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:frontend-dev-1df8f080f5fc1b718894aa69ab1665e07cff9f89
+    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:frontend-dev-7f7e8715d7d49b11c867244a6615c79f7669230b
     port: 80
     replicas: 1
     resources:
@@ -64,7 +62,7 @@ services:
         memory: 256Mi
   product:
     name: product-service
-    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:product-service-dev-1df8f080f5fc1b718894aa69ab1665e07cff9f89
+    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:product-service-dev-7f7e8715d7d49b11c867244a6615c79f7669230b
     port: 8080
     replicas: 1
     resources:
@@ -80,7 +78,7 @@ services:
       dbName: product-service
   order:
     name: order-service
-    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:order-service-dev-1df8f080f5fc1b718894aa69ab1665e07cff9f89
+    image: 767397741479.dkr.ecr.us-east-1.amazonaws.com/microstore:order-service-dev-7f7e8715d7d49b11c867244a6615c79f7669230b
     port: 8081
     replicas: 1
     resources:
